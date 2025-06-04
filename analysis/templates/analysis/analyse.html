@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyse d'une partie</title>
+</head>
+<body>
+    <h1>Analyse de partie d'échecs</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Analyser</button>
+    </form>
+
+    {% if analysis %}
+        <h2>Résultats</h2>
+        <ul>
+        {% for move, eval in analysis %}
+            <li>{{ move }} : {{ eval }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
